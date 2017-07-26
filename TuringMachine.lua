@@ -4,7 +4,7 @@ function TuringMachine:init(states, moveFunctions, initialTape)
 	self.q = states or {} 
 	self.delta = moveFunctions or {}
 	self.tape = initialTape or {" ", " "}
-	self.currentState = self.q[1] or 0
+	self.currentState = self.q[1] or 1
 	self.history = {
 		{Util.deepCopy(self.tape),
 		Util.deepCopy(self.currentState)}

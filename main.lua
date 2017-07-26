@@ -1,3 +1,6 @@
+left @ "L"
+right @ "R"
+
 --Arrow tip shape
 local arrow="M100,70L130,100L100,100M130,100L130,70"
 local a=Path2D.new()
@@ -14,8 +17,8 @@ stage:addChild(circle)
 
 local states = {1, 2, 3, 4} 
 local transitions = { 
-			{1, "1", 2, "0", "L"},
-			{1, "0", 1, "1", "R"}
+			{1, "1", 2, "0", left},
+			{1, "0", 1, "1", right}
 		} 
 
 local tm = TuringMachine.new(states, transitions, {" 011", "001 "})
