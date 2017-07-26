@@ -12,15 +12,6 @@ circle:setFillColor(0xFFFF80,0.7) --Fill color
 circle:setLineColor(0x404000) --Line color
 stage:addChild(circle)
 
-local digraph = Digraph.new(5)
-digraph:addEdge(digraph.nodes[1], digraph.nodes[2])
-digraph:addEdge(digraph.nodes[1], digraph.nodes[3])
-digraph:addEdge(digraph.nodes[2], digraph.nodes[3])
-digraph:addEdge(digraph.nodes[2], digraph.nodes[5])
-digraph:addEdge(digraph.nodes[3], digraph.nodes[4])
-digraph:addEdge(digraph.nodes[4], digraph.nodes[5])
-digraph:debugGraph()
-
 local states = {1, 2, 3, 4} 
 local transitions = { 
 			{1, "1", 2, "0", "L"},
@@ -28,3 +19,7 @@ local transitions = {
 		} 
 
 local tm = TuringMachine.new(states, transitions, {" 011", "001 "})
+
+local digraph = Digraph.new(#states)
+digraph:fillEdges(transitions)
+digraph:debugGraph()
