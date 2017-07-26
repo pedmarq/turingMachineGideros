@@ -28,34 +28,3 @@ local transitions = {
 		} 
 
 local tm = TuringMachine.new(states, transitions, {" 011", "001 "})
-tm:debugTape()
-if tm:nextStep() then
-	print(true)
-else
-	print(false)
-end
-tm:debugTape()
-if tm:nextStep() then
-	print(true)
-else
-	print(false)
-end
-tm:debugTape()
-if tm:nextStep() then
-	print(true)
-else
-	print(false)
-end
-tm:debugTape()
-if tm:nextStep() then
-	print(true)
-else
-	print(false)
-end
-tm:debugTape()
-tm:prevHistory()
-tm:debugTape()
-tm:prevHistory()
-tm:debugTape()
-tm:prevHistory()
-tm:debugTape()

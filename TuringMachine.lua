@@ -6,8 +6,8 @@ function TuringMachine:init(states, moveFunctions, initialTape)
 	self.tape = initialTape or {" ", " "}
 	self.currentState = self.q[1] or 0
 	self.history = {
-		{self.tape,
-		self.currentState}
+		{Util.deepCopy(self.tape),
+		Util.deepCopy(self.currentState)}
 	}
 	self.historyStep = #self.history
 end
@@ -15,7 +15,6 @@ end
 function TuringMachine:nextStep()
 	for index, d in pairs(self.delta) do
 		if d[1] == self.currentState and d[2] == self:readTape() then
-			self:addToHistory()
 			self.currentState = d[3]
 			self:writeTape(d[4])
 			if d[5] == "L" then
@@ -23,6 +22,7 @@ function TuringMachine:nextStep()
 			else
 				self:moveRight()
 			end
+			self:addToHistory()
 			return true
 		end
 	end
@@ -80,10 +80,9 @@ end
 
 function TuringMachine:addToHistory()
 	self.historyStep = self.historyStep + 1
-	self.history[self.historyStep] = {
-				self.tape,
-				self.currentState
-			}
+	local currentTape = Util.deepCopy(self.tape)
+	local currentCurrentState = Util.deepCopy(self.currentState)
+	self.history[self.historyStep] = {currentTape,currentCurrentState}
 end
 
 function TuringMachine:prevHistory()
@@ -106,8 +105,11 @@ function TuringMachine:debugTape()
 	print("CurrentState = " .. self.currentState)
 	print("History", "Step = " .. self.historyStep)
 	for index, value in ipairs(self.history) do
+		print("History index: " .. index)
 		print("Tape: " .. value[1][1] .. " " .. value[1][2])
 		print("State: " .. value[2])
 	end
 	print(self.tape[1] .. "[C]" .. self.tape[2])
+	print()
+	print()
 end
