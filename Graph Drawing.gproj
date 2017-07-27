@@ -4,11 +4,15 @@
   <plugins/>
   <exports/>
  </properties>
- <file source="Util.lua"/>
- <file source="TuringMachine.lua"/>
- <file source="Edge.lua"/>
- <file source="Node.lua"/>
- <file source="Digraph.lua"/>
- <file source="circle.lua"/>
+ <folder name="models">
+  <file source="Util.lua"/>
+  <file source="TuringMachine.lua"/>
+  <file source="Edge.lua"/>
+  <file source="Node.lua"/>
+  <file source="Digraph.lua"/>
+  <file source="circle.lua"/>
+ </folder>
+ <folder name="font"/>
+ <folder name="images"/>
  <file source="main.lua"/>
 </project>
